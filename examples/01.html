@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link rel="stylesheet" href="../demo/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../dist/css/simple-button-radios.css">
+	
+	<style>
+		html, body{
+			height: 100%;
+		}
+		body{
+			background-color: #f8f9fa;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+			-webkit-flex-wrap: wrap;
+			-ms-flex-wrap: wrap;
+			flex-wrap: wrap;
+		}
+		.sbr-btn{
+			height: 30px;
+			width: 30px;
+			background-color: #FFF;
+			border: 1px solid #eee;
+		}
+		.sbr-btn:focus{
+			box-shadow: none;
+		}
+		.sbr-btn svg{
+			height: 18px;
+			width: 18px;
+			fill: #888;
+    		animation-name: bounceIn;
+			animation-duration: .75s;
+			animation-fill-mode: both;
+		}
+		@keyframes bounceIn {
+			0%, 20%, 40%, 60%, 80%, to {
+				animation-timing-function: cubic-bezier(.215,.61,.355,1)
+			}
+
+			0% {
+				opacity: 0;
+				transform: scale3d(.3,.3,.3)
+			}
+
+			20% {
+				transform: scale3d(1.2,1.2,1.2)
+			}
+
+			40% {
+				transform: scale3d(.9,.9,.9)
+			}
+
+			60% {
+				opacity: 1;
+				transform: scale3d(1.03,1.03,1.03)
+			}
+
+			80% {
+				transform: scale3d(.97,.97,.97)
+			}
+
+			to {
+				opacity: 1;
+				transform: scaleX(1)
+			}
+		}
+	</style>
+
+	<title>Simple button radios - 01</title>
+</head>
+<body class="example">
+
+	<div class="form-check">
+		<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+		<label class="form-check-label" for="exampleRadios1">
+			Default radio
+		</label>
+	</div>
+	<div class="form-check">
+		<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+		<label class="form-check-label" for="exampleRadios2">
+			Second default radio
+		</label>
+	</div>
+	<div class="form-check disabled">
+		<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled>
+		<label class="form-check-label" for="exampleRadios3">
+			Disabled radio
+		</label>
+	</div>
+
+	<script src="../demo/js/jquery-3.3.1.min.js"></script>
+	<script src="../demo/js/popper.min.js"></script>
+	<script src="../demo/js/bootstrap.min.js"></script>
+	<script src="../dist/js/simple-button-radios.js"></script>
+	<script src="https://cdn.jsdelivr.net/kute.js/1.6.2/kute.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/kute.js/1.6.2/kute-svg.min.js"></script>
+	
+	<!-- example js -->
+	<script>
+
+		$(document).ready(function() {
+			// example1
+			var icon = '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z"></path></svg>';
+
+			$('input[type="radio"]').simpleButtonRadios({
+				checkedIcon : icon
+			});
+		});
+	</script>
+</body>
+</html>
