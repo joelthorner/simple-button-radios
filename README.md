@@ -33,7 +33,7 @@ $('input[type="radio"]').simpleButtonRadios({
   // 'none' or 'input' or 'all'
   wrapContainer : 'none', 
   // add click listener if label has rel with label for -> input id
-  // <label for="country"></label> <input id="country" type="checkbox">
+  // <label for="country"></label> <input id="country" type="radio">
   strictLabel : true,
   btnAttributes : {
     'type' : 'button'
