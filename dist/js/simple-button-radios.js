@@ -1,5 +1,5 @@
 /*!
- * Simple button radios 1.0.0
+ * Simple button radios 1.0.1
  * http://joelthorner.github.io/simple-button-radios/
  *
  * Copyright 2018 Joel Thorner - @joelthorner
@@ -22,11 +22,7 @@
 			nonCheckedIcon : '',
 
 			// 'none' or 'input' or 'all'
-			wrapContainer : 'none', 
-			
-			// add click listener if label has rel with label for -> input id
-			// <label for="country"></label> <input id="country" type="radio">
-			strictLabel : true,
+			wrapContainer : 'none',
 
 			btnAttributes : {
 				'type' : 'button'
@@ -122,8 +118,7 @@
 	function init() {
 		// init additional listeners
 		plugin.aditionalListeners = [];
-		
-		// label strict/nostrict mode
+
 		labelRelOption();
 
 		// real init new html system
@@ -231,31 +226,6 @@
 		plugin.$btn.on('click.sbr', function(event) {
 			$(this).prev('.sbr-init').click();
 		});
-		
-		plugin.$element.parent().find(plugin.labelToInput).on('click.sbr', function(event) {
-			if(plugin.labelToInput == null){
-				event.preventDefault();
-				event.stopPropagation();
-			}else{
-				$(this).find('.sbr-init').click();
-			}
-		});
-
-		plugin.$element.siblings(plugin.labelToInput).on('click.sbr', function(event) {
-			if(plugin.labelToInput == null){
-				event.preventDefault();
-				event.stopPropagation();
-			}else{
-				$(this).siblings('.sbr-init').click();
-			}
-		});
-
-		plugin.$element.parent(plugin.labelToInput).on('click.sbr', function(event) {
-			if(plugin.labelToInput != null){
-				// this call 3 times for click and is an error
-				// $(this).find('.sbr-init').click();
-			}
-		});
 
 		plugin.$element.on('change.sbr', function(event) {
 
@@ -266,20 +236,22 @@
 				thisData.options.onChange.call(self, thisData);
 			}
 
-			$('[data-sbr-name="' + thisData.inputName + '"]').not(thisData.$btn)
-				.removeClass('sbr-checked')
-				.addClass('sbr-no-checked')
-				.html(thisData.options.nonCheckedIcon);
-
-			$(thisData.$btn)
-				.addClass('sbr-checked')
-				.removeClass('sbr-no-checked')
-				.html(thisData.options.checkedIcon);
-			
 			// save checked datas
 			$('[name="' + thisData.inputName + '"]').each(function(index, el) {
 				var thisData = $(this).data('simpleButtonRadios');
 				thisData.isChecked = $(this).prop('checked');
+
+				if (thisData.isChecked) {
+					$(thisData.$btn)
+						.addClass('sbr-checked')
+						.removeClass('sbr-no-checked')
+						.html(thisData.options.checkedIcon);
+				}else{
+					$(thisData.$btn)
+						.removeClass('sbr-checked')
+						.addClass('sbr-no-checked')
+						.html(thisData.options.nonCheckedIcon);
+				}
 			});
 
 			if($.type(thisData.options.changeCallback) === 'function'){
@@ -299,25 +271,14 @@
 	}
 
 	function labelRelOption () {
-		if (plugin.options.strictLabel != null) {
 
-			// save input label reference
-			var inputId = plugin.$element.attr('id');
+		// save input label reference
+		var inputId = plugin.$element.attr('id');
 
-			// if not find input label reference and option is true -> set strictLabel to false
-		 	if ($('label[for="'+inputId+'"]').length == 0){
-		 		plugin.options.strictLabel = false;
-		 	}
-
-		 	if (plugin.options.strictLabel) {
-		 		plugin.labelToInput = 'label[for="'+inputId+'"]';
-		 	}else{	
-		 		plugin.labelToInput = 'label';
-		 	}
-
-		}
-		else if(plugin.options.strictLabel == null){
-			plugin.labelToInput = null;
+		if (inputId.length) {
+			plugin.labelToInput = 'label[for="'+inputId+'"]';
+		}else{	
+			plugin.labelToInput = 'label';
 		}
 	}
 
