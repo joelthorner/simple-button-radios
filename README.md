@@ -3,6 +3,8 @@ simple-button-radios
 ==========
 Simple button radios is a simple plugin for transform radio inputs into html buttons for css customize. High performance, keyboard support and preserve original input click/change events.
 
+Checkbox plugin: [https://github.com/joelthorner/simple-button-checks](https://github.com/joelthorner/simple-button-checks)
+
 ## Demos / Documentation
 Demo and doc : [http://joelthorner.github.io/simple-button-radios/](http://joelthorner.github.io/simple-button-radios/)
 
