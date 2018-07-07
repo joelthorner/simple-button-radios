@@ -1,5 +1,5 @@
 /*!
- * Simple button radios 1.0.1
+ * Simple button radios 1.0.2
  * http://joelthorner.github.io/simple-button-radios/
  *
  * Copyright 2018 Joel Thorner - @joelthorner
@@ -275,8 +275,8 @@
 		// save input label reference
 		var inputId = plugin.$element.attr('id');
 
-		if (inputId.length) {
-			plugin.labelToInput = 'label[for="'+inputId+'"]';
+		if ($.type(inputId) != 'undefined' && inputId.length) {
+			plugin.labelToInput = 'label[for="' + inputId + '"]';
 		}else{	
 			plugin.labelToInput = 'label';
 		}
