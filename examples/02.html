@@ -8,123 +8,107 @@
 	<link rel="stylesheet" href="../dist/css/simple-button-radios.css">
 	
 	<style>
-		html, body{
-			height: 100%;
-		}
-		body{
-			background-color: #f8f9fa;
-			display: -webkit-box;
-			display: -ms-flexbox;
-			display: flex;
-			-webkit-box-align: center;
-			-ms-flex-align: center;
-			align-items: center;
-			-webkit-box-pack: center;
-			-ms-flex-pack: center;
-			justify-content: center;
-			-webkit-flex-wrap: wrap;
-			-ms-flex-wrap: wrap;
-			flex-wrap: wrap;
-		}
-		.radio{
-			padding: 15px;
-		}
-		label{
-			margin-bottom: 0;
-			margin-left: .5rem;
-			font-size: .8rem;
-		}
-		hr{
-			width: 100%;
-		}
-		.text-muted{
-			display: inline-block;
-			text-align: left;
-			font-size: .8rem;
-		}
-		input:disabled ~ label {
-			color: #6c757d;
-		}
-		.btns{
-			width: 100%;
-			display: -webkit-box;
-			display: -ms-flexbox;
-			display: flex;
-			-webkit-box-align: center;
-			-ms-flex-align: center;
-			align-items: center;
-			-webkit-box-pack: space-evenly;
-			-ms-flex-pack: space-evenly;
-			justify-content: space-evenly;
-			padding-bottom: 15px;
-		}
-	</style>
+	html, body{
+		height: 100%;
+	}
+	body{
+		background-color: #f8f9fa;
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
+		justify-content: center;
+		-webkit-flex-wrap: wrap;
+		-ms-flex-wrap: wrap;
+		flex-wrap: wrap;
+	}
+	.radio{
+		padding: 15px;
+	}
+	label{
+		margin-bottom: 0;
+		margin-left: .5rem;
+		font-size: .8rem;
+	}
+	hr{
+		width: 100%;
+	}
+	.text-muted{
+		display: inline-block;
+		text-align: left;
+		font-size: .8rem;
+	}
+	input:disabled ~ label {
+		color: #6c757d;
+	}
+	.btns{
+		width: 100%;
+	}
+	.btns ._btn {
+		margin-bottom: 15px;
+		width: calc(33.333% - 30px);
+		display: block;
+		float: left;
+		margin: 15px;
+		font-size: small;
+		text-align: center;
+		color: #888;
+	}
+	.btns .btn {
+		white-space: normal;
+		padding: 7px 15px;
+		font-family: monospace;
+		display: block;
+		width: 100%;
+		margin-top: 5px;
+	}
+</style>
 
-	<title>Simple button radios - 02</title>
+<title>Simple button radios - 02</title>
 </head>
 <body class="example">
-	<small class="text-muted">Checked attr and disabled:</small>
-	<div class="radio">
-		<input type="radio" name="genere" id="female" value="female" checked>
-		<label for="female">
-			Female
-		</label>
-	</div>
-	<div class="radio">
-		<input type="radio" name="genere" id="male" value="male">
-		<label for="male">
-			Male
-		</label>
-	</div>
-	<div class="radio">
-		<input type="radio" name="genere" id="robot" value="robot" disabled>
-		<label for="robot">
-			Robot
-		</label>
-	</div>
-
-	<hr>
-
-	<small class="text-muted">Nothing pre-checked:</small>
-	<div class="radio">
-		<input type="radio" name="colors" id="blue" value="blue">
-		<label for="blue">
-			Blue
-		</label>
-	</div>
-	<div class="radio">
-		<input type="radio" name="colors" id="yellow" value="yellow">
-		<label for="yellow">
-			Yellow
-		</label>
-	</div>
-	<div class="radio">
-		<input type="radio" name="colors" id="lime" value="lime">
-		<label for="lime">
-			Lime
-		</label>
-	</div>
-	
-	<hr>
 	<small class="text-muted">Test prop & change and click events:</small>
 	<div class="radio">
-		<input type="radio" name="cookies" id="yes" value="yes" checked>
+		<input type="radio" name="yesornot" id="yes" value="yes" checked>
 		<label for="yes">
-			Yummy <a href="#">Read more</a>
+			Yes
 		</label>
 	</div>
 	<div class="radio">
-		<input type="radio" name="cookies" id="no" value="no">
+		<input type="radio" name="yesornot" id="no" value="no">
 		<label for="no">
-			Poke cookies <a href="#">Read more</a>
+			No
 		</label>
 	</div>
 	<div class="btns">
-		<button class="btn btn-primary btn-sm" type="button" id="propTest">Check prop & change event <b>no</b></button>
-		<button class="btn btn-primary btn-sm" type="button" id="clickTest">Check click event <b>no</b></button>
-		<button class="btn btn-primary btn-sm" type="button" id="unckeckall">Uncheck all prop & change event</button>
-		<button class="btn btn-primary btn-sm" type="button" id="destroy">Destroy method <b>all</b></button>
-		<button class="btn btn-primary btn-sm" type="button" id="init">Init <b>all</b></button>
+		<div class="_btn">
+			Check #no and update method
+			<button class="btn btn-primary btn-sm" type="button" id="updateTest">$('#no').prop('checked', true).simpleButtonRadios('update')</button>
+		</div>
+		<div class="_btn">	
+			Check #no and trigger jQuery change
+			<button class="btn btn-primary btn-sm" type="button" id="propTest">$('#no').prop('checked', true).trigger('change')</button>
+		</div>
+		<div class="_btn">	
+			Click #no
+			<button class="btn btn-primary btn-sm" type="button" id="clickTest">$('#no').trigger('click')</button>
+		</div>
+		<div class="_btn">	
+			Uncheck all radios and update method
+			<button class="btn btn-primary btn-sm" type="button" id="unckeckall">$('[name="yesornot"]').prop('checked', false).simpleButtonRadios('update')</button>
+		</div>
+		<div class="_btn">
+			Destroy all radios
+			<button class="btn btn-primary btn-sm" type="button" id="destroy">$('[name="yesornot"]').simpleButtonRadios('destroy');</button>
+		</div>
+		<div class="_btn">
+			Init all radios
+			<button class="btn btn-primary btn-sm" type="button" id="init">$('[name="yesornot"]').simpleButtonRadios();</button>
+		</div>
 	</div>
 
 	<script src="../demo/js/jquery-3.3.1.min.js"></script>
@@ -135,23 +119,26 @@
 
 		$(document).ready(function() {
 			// example1
-			$('input[type="radio"]').simpleButtonRadios({});
+			$('input[type="radio"]').simpleButtonRadios();
 
 			// tests
+			$('#updateTest').click(function(event) {
+				$('#no').prop('checked', true).simpleButtonRadios('update');
+			});
 			$('#propTest').click(function(event) {
-				$('#no').prop('checked', true).change();
+				$('#no').prop('checked', true).trigger('change');
 			});
 			$('#clickTest').click(function(event) {
-				$('#no').prop('checked', true).change();
+				$('#no').prop('checked', true).trigger('click');
 			});
 			$('#destroy').click(function(event) {
-				$('[name="cookies"]').simpleButtonRadios('destroy');
+				$('[name="yesornot"]').simpleButtonRadios('destroy');
 			});
 			$('#init').click(function(event) {
-				$('[name="cookies"]').simpleButtonRadios();
+				$('[name="yesornot"]').simpleButtonRadios();
 			});
 			$('#unckeckall').click(function(event) {
-				$('[name="cookies"]:checked').prop('checked', false).change();
+				$('[name="yesornot"]').prop('checked', false).simpleButtonRadios('update')
 			});
 		});
 	</script>

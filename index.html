@@ -30,7 +30,7 @@
 </head>
 <body>
 	<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-		<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Simple button radios <span class="badge badge-pill badge-primary">v1.0.2</span></a>
+		<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Simple button radios <span class="badge badge-pill badge-primary">v1.0.3</span></a>
 		
 		<ul class="navbar-nav px-3">
 			<li class="nav-item text-nowrap">
@@ -259,8 +259,12 @@ myInput.simpleButtonRadios('destroy');</div>
 				<br>
 				<div class="alert alert-warning" role="alert">
 					<h3 class="alert-heading">Check / unckeck</h4>
-					<p>For js check or uncheck input use default <a class="alert-link" href="http://api.jquery.com/prop/" target="_blank">jQuery prop method</a> into original input with change event:<br><kbd>$('#check-one').prop('checked', true).change();</kbd></p>
-					<p>Or use click event into original input:<br><kbd>$('#check-one').click();</kbd></p>
+					
+					<p><b>Mode 1:</b> <a class="alert-link" href="http://api.jquery.com/prop/" target="_blank">jQuery prop method</a> into original input and update method. <br><code>$('#check-one').prop('checked', true).simpleButtonRadios('update');</code></p>
+
+					<p><b>Mode 2:</b> <a class="alert-link" href="http://api.jquery.com/prop/" target="_blank">jQuery prop method</a> into original input with change event:<br><code>$('#check-one').prop('checked', true).trigger('change');</code></p>
+
+					<p><b>Mode 3:</b> Use click event into original input:<br><code>$('#check-one').click();</code></p>
 				</div>
 				<br>
 				<div class="table-responsive">
@@ -290,6 +294,10 @@ myInput.simpleButtonRadios('destroy');</div>
 									<code>myInput.simpleButtonRadios('disable', true);</code>
 								</td>
 							</tr>
+							<tr>
+								<td><code>myInput.simpleButtonRadios(<span>'update'</span>);</code></td>
+								<td>Refresh all radios grouped by name attr</td>
+							</tr>
 						</tbody>
 					</table>
 				</div>
@@ -304,7 +312,16 @@ myInput.simpleButtonRadios('destroy');</div>
 				<iframe class="demo" src="examples/02.html" frameborder="0" style="min-height: 290px;"></iframe>
 				<br>
 				<br>
+				<p>Add dynamic radios</p>
+				<iframe class="demo" src="examples/03.html" frameborder="0"></iframe>
+				<br>
+				<br>
 				<h2 id="changelog">Changelog</h2>
+				<h3>1.0.3</h3>
+				<ul>
+					<li>Add update method</li>
+					<li>Update demos and add demo with dynamic inputs</li>
+				</ul>
 				<h3>1.0.2</h3>
 				<ul>
 					<li>Fix bug inputId is undefined</li>
