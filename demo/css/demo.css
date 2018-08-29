@@ -6,6 +6,11 @@ body {
   height: 16px;
   vertical-align: text-bottom; }
 
+.alert-warning code {
+  background: #FFF;
+  padding: 3px 5px;
+  border-radius: 5px; }
+
 .sidebar {
   position: fixed;
   top: 0;

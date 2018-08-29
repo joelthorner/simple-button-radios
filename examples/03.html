@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link rel="stylesheet" href="../demo/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../dist/css/simple-button-radios.css">
+	
+	<style>
+		html, body{
+			height: 100%;
+		}
+		body{
+			background-color: #f8f9fa;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+			-webkit-flex-wrap: wrap;
+			-ms-flex-wrap: wrap;
+			flex-wrap: wrap;
+		}
+		.radio{
+			padding: 15px;
+		}
+		label{
+			margin-bottom: 0;
+			margin-left: .5rem;
+			font-size: .8rem;
+		}
+		hr{
+			width: 100%;
+		}
+		.text-muted{
+			display: inline-block;
+			text-align: left;
+			font-size: .8rem;
+		}
+		input:disabled ~ label {
+			color: #6c757d;
+		}
+		.btns{
+			width: 100%;
+		}
+		.btns .btn {
+			margin-bottom: 15px;
+			padding: 7px 15px;
+			font-family: monospace;
+			width: calc(33.333% - 30px);
+			display: block;
+			float: left;
+			margin: 15px;
+		}
+	</style>
+
+	<title>Simple button radios - 03</title>
+</head>
+<body class="example">
+	<div class="form-check">
+		<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+		<label class="form-check-label" for="exampleRadios1">
+			Default radio
+		</label>
+	</div>
+	<div class="form-check">
+		<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+		<label class="form-check-label" for="exampleRadios2">
+			Second default radio
+		</label>
+	</div>
+
+	<div class="btns">
+		<button class="btn btn-primary btn-sm" type="button" id="addDynamicCheckedAttr">Add dynamic input with [checked] attr</button>
+		<button class="btn btn-primary btn-sm" type="button" id="addDynamicCheckedProp">Add dynamic input and .prop('checked', true)</button>
+		<button class="btn btn-primary btn-sm" type="button" id="addDynamicNoChecked">Add dynamic input non checked</button>
+	</div>
+
+	<script src="../demo/js/jquery-3.3.1.min.js"></script>
+	<script src="../dist/js/simple-button-radios.js"></script>
+	
+	<!-- example js -->
+	<script>
+
+		$(document).ready(function() {
+			// example1
+			$('input[type="radio"]').simpleButtonRadios({});
+
+			// tests
+			$('#addDynamicCheckedProp').click(function(event) {
+				
+				var newId = Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+
+				$('.form-check').last().after(`
+					<div class="form-check disabled">
+						<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios-${newId}" value="option3">
+						<label class="form-check-label" for="exampleRadios-${newId}">
+							Dynamic radio ${newId}
+						</label>
+					</div>
+				`);
+				$('#exampleRadios-' + newId).prop('checked', true);
+				$('[type="radio"]').simpleButtonRadios('update');
+			});
+
+			$('#addDynamicCheckedAttr').click(function(event) {
+				
+				var newId = Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+
+				$('.form-check').last().after(`
+					<div class="form-check disabled">
+						<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios-${newId}" value="option3" checked>
+						<label class="form-check-label" for="exampleRadios-${newId}">
+							Dynamic radio ${newId}
+						</label>
+					</div>
+				`);
+
+				$('[type="radio"]').simpleButtonRadios('update');
+			});
+			
+			$('#addDynamicNoChecked').click(function(event) {
+				var newId = Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+
+				$('.form-check').last().after(`
+					<div class="form-check disabled">
+						<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios-${newId}" value="option3">
+						<label class="form-check-label" for="exampleRadios-${newId}">
+							Dynamic radio ${newId}
+						</label>
+					</div>
+				`);
+
+				$('[type="radio"]').simpleButtonRadios('update');
+			});
+		});
+	</script>
+</body>
+</html>

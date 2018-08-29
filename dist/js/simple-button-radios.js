@@ -1,5 +1,5 @@
 /*!
- * Simple button radios 1.0.2
+ * Simple button radios 1.0.3
  * http://joelthorner.github.io/simple-button-radios/
  *
  * Copyright 2018 Joel Thorner - @joelthorner
@@ -110,6 +110,26 @@
 					_self.click();
 				});
  			}
+		},
+
+		update : function() {
+			var thisData = $(this).data('simpleButtonRadios'),
+				 _self = $(this);
+
+				var thisData = _self.data('simpleButtonRadios');
+				thisData.isChecked = _self.prop('checked');
+
+				if (thisData.isChecked) {
+					$(thisData.$btn)
+						.addClass('sbr-checked')
+						.removeClass('sbr-no-checked')
+						.html(thisData.options.checkedIcon);
+				}else{
+					$(thisData.$btn)
+						.removeClass('sbr-checked')
+						.addClass('sbr-no-checked')
+						.html(thisData.options.nonCheckedIcon);
+				}
 		}
 	};
 
