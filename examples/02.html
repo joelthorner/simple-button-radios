@@ -95,7 +95,7 @@
 		</div>
 		<div class="_btn">	
 			Click #no
-			<button class="btn btn-primary btn-sm" type="button" id="clickTest">$('#no').trigger('click')</button>
+			<button class="btn btn-primary btn-sm" type="button" id="clickTest">$('#no').trigger('click').simpleButtonRadios('update')</button>
 		</div>
 		<div class="_btn">	
 			Uncheck all radios and update method
@@ -129,7 +129,7 @@
 				$('#no').prop('checked', true).trigger('change');
 			});
 			$('#clickTest').click(function(event) {
-				$('#no').prop('checked', true).trigger('click');
+				$('#no').trigger('click').simpleButtonRadios('update');
 			});
 			$('#destroy').click(function(event) {
 				$('[name="yesornot"]').simpleButtonRadios('destroy');

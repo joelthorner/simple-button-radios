@@ -55,6 +55,8 @@
         // remove events
         thisData.$element.off('change.sbr');
 
+        thisData.$element.off('focus.sbr');
+
         if (thisData.labelToInput) {
 
           thisData.$element
@@ -282,10 +284,11 @@
 
     // focus tabs
     plugin.$element.on('focus.sbr', function (event) {
-      var thisData = $(this).data('simpleButtonRadios'),
-        self = $(this);
+      var thisData = $(this).data('simpleButtonRadios');
 
-      thisData.$btn.focus();
+      if (thisData) { 
+        thisData.$btn.focus();
+      }
     });
 
   }
